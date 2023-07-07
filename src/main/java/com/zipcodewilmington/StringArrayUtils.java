@@ -96,21 +96,25 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean isPangramic(String[] array) {
 
-        boolean flag = true;
-
-
-
+        boolean flag = false;
         ArrayList<String> newArray = new ArrayList<>();
+
         for (int i = 0; i < array.length; i++) {
             newArray.add(array[i].toLowerCase());
         }
 
+
         char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 
         for (int i = 0; i < alphabet.length; i++) {
-            Character c = alphabet[i];
-            if (!newArray.contains(c)) {
-                flag = false;
+            for (int j = 0; j < newArray.size(); j++) {
+                Character c = alphabet[i];
+                if (newArray.get(j).contains(c + "")) {
+                    flag = true;
+                    break;
+                } else
+                    flag = false;
+
 
             }
 
